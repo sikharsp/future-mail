@@ -1,16 +1,61 @@
-# React + Vite
+# 🚀 Future Mail
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Future Mail** is a production-ready email scheduling backend that allows users to send emails **automatically at a future date & time**.  
+Emails are stored securely and delivered via background cron execution — no manual intervention required.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Why Future Mail?
 
-## React Compiler
+Many applications need delayed or scheduled emails:
+- ⏰ Reminders
+- 🔔 Notifications
+- 📩 Onboarding emails
+- 🧾 Alerts & reports
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Future Mail solves this reliably using a **database-driven queue + cron jobs**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧩 Core Features
+
+✅ Schedule emails for future delivery  
+✅ Automatic background email sending  
+✅ Secure credentials using environment variables  
+✅ SMTP support using **PHPMailer**  
+✅ Database-based email queue (`pending`, `sent`, `failed`)  
+✅ Production-ready & scalable design  
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer | Technology |
+|-----|-----------|
+| Backend | PHP |
+| Mail Service | PHPMailer (SMTP) |
+| Database | MySQL |
+| Scheduler | Cron Job |
+| Hosting | Render / VPS / Shared Hosting |
+
+---
+
+---
+
+## 🔄 Email Processing Workflow
+
+1️⃣ User schedules an email  
+2️⃣ Email is saved in the database with status **`pending`**  
+3️⃣ Cron job runs automatically  
+4️⃣ Due emails are sent via SMTP  
+5️⃣ Status updates to **`sent`** or **`failed`**
+
+---
+
+## ⏱️ Cron Job Setup
+
+### 🖥️ Linux / VPS
+```bash
+* * * * * /usr/bin/php /path/to/send_pending_emails.php >> cron.log 2>&1
+
+
